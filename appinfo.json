@@ -1,0 +1,13 @@
+{
+  "id": "com.streamano.tv",
+  "version": "3.2.0",
+  "type": "web",
+  "title": "Streamano v32",
+  "main": "index.html",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png",
+  "disableBackHistoryAPI": true,
+  "accessibility": {
+    "supportsAudioGuidance": false
+  }
+}

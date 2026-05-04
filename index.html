@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Streamano</title>
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="vendor/controls.min.css">
+<link rel="stylesheet" href="vendor/videojs/video-js.min.css">
+<script src="vendor/videojs/video.min.js"></script>
+</head>
+<body>
+<div id="app">
+
+  <div id="sidebar">
+    <div id="brand">
+      <div class="brand-logo">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="2" y="2" width="7" height="18" rx="1.5" fill="white"/>
+          <rect x="13" y="2" width="7" height="18" rx="1.5" fill="white" opacity=".55"/>
+        </svg>
+      </div>
+      <span class="brand-name">Streamano</span>
+    </div>
+    <div class="sidebar-sep"></div>
+    <div id="menu"></div>
+    <div id="sidebarProfile">
+      <div class="profile-ring">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="7" r="4" fill="white" opacity=".9"/>
+          <path d="M2 17c0-4 3.6-7 8-7s8 3 8 7" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".9"/>
+        </svg>
+      </div>
+      <span class="profile-name">My Account</span>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="hero">
+      <div id="heroBgA" class="hero-bg"></div>
+      <div id="heroBgB" class="hero-bg"></div>
+      <div id="heroGrad"></div>
+      <div id="heroContent">
+        <div id="heroBadge">
+          <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><polygon points="1,1 8,4.5 1,8" fill="white"/></svg>
+          Now Streaming
+        </div>
+        <div id="heroTitle"></div>
+        <div id="heroMeta"></div>
+        <div id="heroDesc"></div>
+        <div id="heroActions">
+          <div class="heroBtn heroBtn--play" id="hBtnPlay">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            Play
+          </div>
+          <div class="heroBtn heroBtn--list" id="hBtnList">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            My List
+          </div>
+          <div class="heroBtn heroBtn--info" id="hBtnInfo">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Details
+          </div>
+        </div>
+        <div id="heroHint">Navigate rows below &bull; OK to open</div>
+      </div>
+    </div>
+
+    <div id="rows"></div>
+  </div>
+
+  <div id="detail" class="hidden">
+    <div id="detailBg"></div>
+    <div id="detailShade"></div>
+    <div id="detailBody">
+      <div id="detailBadge"></div>
+      <div id="detailTitle"></div>
+      <div id="detailMeta"></div>
+      <div id="detailDesc"></div>
+      <div id="detailActions"></div>
+      <div id="detailHint"></div>
+      <div id="similarSection">
+        <div id="similarTitle"></div>
+        <div id="similarStrip"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="player" class="hidden native-mode">
+    <div id="shakaUiContainer" data-shaka-player-container data-shaka-player-cast-receiver-id="">
+      <video id="video" class="video-js vjs-default-skin" playsinline autoplay data-shaka-player></video>
+    </div>
+    <div id="rmp"></div>
+
+    <div id="playerTop">
+      <div id="playerBack">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+          <polyline points="13,4 7,10 13,16" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div id="playerTopTitle"></div>
+      <div id="playerLiveBadge" class="hidden"><span class="live-dot"></span>LIVE</div>
+    </div>
+
+    <div id="playerCenter">
+      <div id="playerCenterInner">
+        <svg id="playerCenterSvg" width="40" height="40" viewBox="0 0 36 36" fill="none">
+          <polygon id="svgPlay" points="8,4 32,18 8,32" fill="white"/>
+          <g id="svgPause" style="display:none">
+            <rect x="6" y="4" width="8" height="28" rx="2" fill="white"/>
+            <rect x="22" y="4" width="8" height="28" rx="2" fill="white"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div id="playerUi">
+      <div id="playerTitle"></div>
+      <div id="playerProgressWrap">
+        <div id="playerProgressBuffered"></div>
+        <div id="playerProgressBar"></div>
+        <div id="playerProgressThumb"></div>
+      </div>
+      <div id="playerTimeRow">
+        <span id="playerTime">0:00 / 0:00</span>
+        <span id="playerMsg"></span>
+      </div>
+      <div id="playerControls"></div>
+    </div>
+
+    <div id="playerSettings" class="hidden">
+      <div id="settingsTitle">Settings</div>
+      <div id="settingsList"></div>
+    </div>
+
+    <div id="exitOverlay" class="hidden">
+      <div id="exitBox">
+        <div id="exitTitle">Exit App?</div>
+        <div id="exitSub">Press BACK again to exit, or OK to continue watching</div>
+        <div id="exitActions">
+          <div class="exitBtn focus" id="exitNo">Continue</div>
+          <div class="exitBtn" id="exitYes">Exit</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="playerPicker" class="hidden">
+      <div id="playerPickerPanel">
+        <div id="playerPickerTitle">Select player</div>
+        <div id="playerPickerOptions">
+          <div class="pickerOpt focus" data-player="videojs">
+            <div class="pickerLogo pickerLogoVideo">VJS</div>
+            <div class="pickerName">Video.js</div>
+            <div class="pickerDesc">Best compatibility for HLS streams</div>
+          </div>
+          <div class="pickerOpt" data-player="jwplayer">
+            <div class="pickerLogo pickerLogoJw">JW</div>
+            <div class="pickerName">JW Player</div>
+            <div class="pickerDesc">Use your own licensed JW library</div>
+          </div>
+        </div>
+        <div id="playerPickerActions">
+          <div class="pickerBtn focus" id="pickerConfirm">Confirm</div>
+          <div class="pickerBtn" id="pickerCancel">Cancel</div>
+        </div>
+        <label id="playerPickerRememberWrap">
+          <input type="checkbox" id="playerPickerRemember">
+          Remember my choice
+        </label>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
