@@ -1,0 +1,7 @@
+```
+# Compressed archives
+*.zip
+
+# WebOS app build artifacts
+webos-app/
+```
